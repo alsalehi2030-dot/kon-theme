@@ -7,6 +7,8 @@
 #}
 {% extends "layouts.master" %}
 {% block content %}
+    {# Kon Store landing is always the home page; sections added in the editor appear below it #}
+    {% component 'home.kon-landing' %}
     {% component home %}
 {% endblock %}
 {% block scripts %}
