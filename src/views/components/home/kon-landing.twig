@@ -1,0 +1,245 @@
+{#
+  Kon Store landing (home component). Fields:
+  iphone_id, android_id : Salla product ids used by the order buttons
+  whatsapp              : support number, international format without +
+#}
+{% set iphone_id = iphone_id|default('409316185') %}
+{% set android_id = android_id|default('2042956966') %}
+{% set whatsapp = whatsapp|default('966556938377') %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400;600;700;800;900&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap">
+<link rel="stylesheet" href="{{ 'kon-landing.css' | asset }}">
+<section class="kon-home" component-id="{{ componentId }}" dir="rtl" data-cart-url="{{ link('cart') }}">
+<div class="prog" id="prog"></div>
+
+<div id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div class="hcard" id="heroArt">
+        <canvas class="embers" id="embers" aria-hidden="true"></canvas>
+        <svg class="doodles" viewBox="0 0 360 400" aria-hidden="true" fill="none" stroke="#ffe9e0" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path class="dz" d="M70 92 52 126h18l-10 30 30-42H72l12-22z"/>
+          <path class="dz" d="M40 70l8 6M58 58l4 9"/>
+          <path class="tw" d="M118 150c0 9-5 14-14 14 9 0 14 5 14 14 0-9 5-14 14-14-9 0-14-5-14-14z"/>
+          <path class="tw t2" d="M300 250c0 10-6 16-16 16 10 0 16 6 16 16 0-10 6-16 16-16-10 0-16-6-16-16z"/>
+          <path class="tw t3" d="M38 196c0 6-4 10-10 10 6 0 10 4 10 10 0-6 4-10 10-10-6 0-10-4-10-10z"/>
+          <path class="tw t2" d="M240 312c0 6-3 9-9 9 6 0 9 3 9 9 0-6 3-9 9-9-6 0-9-3-9-9z"/>
+        </svg>
+        <div class="hc-tab"><span class="pill"><i></i>لكل تطبيقات البلس.. بمكان واحد</span></div>
+        <div class="hc-logo"><img src="{{ 'images/kon/logo.webp' | asset }}" alt="كون ستور"></div>
+        <div class="hc-copy">
+          <h1><span class="w">وصلت</span> <em class="w2">مكانك.</em></h1>
+          <span class="bar2"></span>
+          <h2>خذ راحتك.. والباقي علينا.</h2>
+          <p>تطبيقات بلس للآيفون والأندرويد.. جهزناها لك بعناية.</p>
+        </div>
+        <div class="hc-art"><img class="hchar" id="hchar" src="{{ 'images/kon/logo.webp' | asset }}" alt=""><div class="orbit" id="orbit"></div></div>
+        <div class="hc-panel"><div class="hc-rows">
+          <div class="hr"><span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="4" y="4" width="7" height="7" rx="2"/><rect x="13" y="4" width="7" height="7" rx="2"/><rect x="4" y="13" width="7" height="7" rx="2"/><rect x="13" y="13" width="7" height="7" rx="2"/></svg></span><span><b>كل تطبيقاتك،</b>بمكان واحد.</span></div>
+          <div class="hr"><span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></span><span><b>تدفع، والكود</b>يوصلك فوراً.</span></div>
+          <div class="hr"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="14" width="4" height="6" rx="1.5" fill="currentColor"/><rect x="17" y="14" width="4" height="6" rx="1.5" fill="currentColor"/></svg></span><span><b>معك حتى</b>بعد طلبك.</span></div>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+<section class="sec" id="plans" style="padding-top:44px">
+    <div class="wrap">
+      <div class="hd"><span class="ghost-n">PLANS</span><span class="eb"><i></i>الباقات</span><h2>اختر باقتك <em>الحصرية</em></h2><p>تفعيل فوري بعد الدفع، اشتراك سنة كاملة وضمان على الاشتراك.</p></div>
+      <div class="pk-switch" id="pkSwitch" role="tablist" aria-label="الباقات">
+        <span class="knob"></span>
+        <button type="button" role="tab" aria-selected="true" data-i="0"><span>باقة الآيفون · <span class="num">69.99</span> ر.س</span><small>الأكثر طلباً</small></button>
+        <button type="button" role="tab" aria-selected="false" data-i="1"><span>باقة الأندرويد · <span class="num">39.99</span> ر.س</span><small>الاقتصادية</small></button>
+      </div>
+      <div class="pk-hint"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h14l-3-3M20 16H6l3 3"/></svg>انقر أو اسحب للتبديل بين الباقتين</div>
+      <div class="pk-stage" id="pkStage">
+        <span class="fly" style="top:10%;right:-4px"><img src="{{ 'images/kon/snapchat.webp' | asset }}" alt=""></span>
+        <span class="fly" style="top:34%;left:-6px;animation-delay:-1.6s"><img src="{{ 'images/kon/instagram.webp' | asset }}" alt=""></span>
+        <span class="fly" style="top:52%;right:-8px;animation-delay:-3.1s"><img src="{{ 'images/kon/tiktok.webp' | asset }}" alt=""></span>
+        <span class="fly" style="top:74%;left:-4px;animation-delay:-.8s"><img src="{{ 'images/kon/whatsapp.webp' | asset }}" alt=""></span>
+        <span class="fly" style="top:88%;right:2px;animation-delay:-2.3s"><img src="{{ 'images/kon/youtube.webp' | asset }}" alt=""></span>
+        <div class="pk-deck" id="pkDeck">
+          <article class="pkc dark" aria-label="باقة بلس للآيفون">
+            <div class="top"><div class="ed"><span class="seal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 3 5 6v5c0 4.4 3 8.3 7 9.5 4-1.2 7-5.1 7-9.5V6z"/><path d="m9 12 2 2 4-4"/></svg></span><span><small>EDITION</small><b>iPhone · 2026</b></span></div><span class="badge2">VIP ★ الأكثر طلباً</span></div>
+            <h3>بلس الآيفون</h3><div class="lead">أقوى اشتراك لجوالك، شامل كامل المميزات</div>
+            <div class="dash"></div>
+            <ul>
+              <li>تفعيل فوري بعد الدفع</li>
+              <li class="hl"><span>ضمان ذهبي 6 أشهر</span><span class="chip">VIP</span></li>
+              <li>اشتراك سنة كاملة</li>
+              <li>أكثر من 10,000 تطبيق ولعبة</li>
+              <li>تثبيت مباشر بكود خاص بجهازك</li>
+              <li>بدون جلبريك وبدون كمبيوتر</li>
+              <li>دعم فني على الواتساب</li>
+            </ul>
+            <div class="foot">
+              <div class="lab"><span>اشتراك سنوي شامل كامل المميزات</span><span class="now-tag"><i></i>متاح الآن</span></div>
+              <div class="price"><s>99.99 ر.س</s><b>69.99<small>ر.س</small></b></div>
+              <button class="go add" type="button" data-n="باقة الآيفون" data-id="{{ iphone_id }}">اطلبها الآن<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+            </div>
+          </article>
+          <article class="pkc light back" aria-label="باقة بلس للأندرويد">
+            <div class="top"><div class="ed"><span class="seal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 3 5 6v5c0 4.4 3 8.3 7 9.5 4-1.2 7-5.1 7-9.5V6z"/></svg></span><span><small>EDITION</small><b>Android · 2026</b></span></div><span class="badge2">الباقة الاقتصادية</span></div>
+            <h3>بلس الأندرويد <span class="std">STANDARD</span></h3><div class="lead">خيار اقتصادي بسعر أقل</div>
+            <div class="dash"></div>
+            <ul>
+              <li>تفعيل فوري بعد الدفع</li>
+              <li>اشتراك سنة كاملة</li>
+              <li>ضمان 6 أشهر</li>
+              <li>أكثر من 4,000 تطبيق وأداة</li>
+              <li>أدوات تصميم وألعاب</li>
+              <li>دعم فني على الواتساب</li>
+            </ul>
+            <div class="foot">
+              <div class="lab"><span>اشتراك سنوي اقتصادي</span><span class="now-tag"><i></i>متاح الآن</span></div>
+              <div class="price"><s>79.99 ر.س</s><b>39.99<small>ر.س</small></b></div>
+              <button class="go add" type="button" data-n="باقة الأندرويد" data-id="{{ android_id }}">اطلبها الآن<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+<section class="sec" id="plus" style="padding-top:0">
+    <div class="wrap"><div class="hd lift pre"><span class="ghost-n">APPS</span><span class="eb"><i></i>داخل الاشتراك</span><h2>تعرف تطبيقاتك.. <em>بس مو كل اللي فيها</em></h2><p>تعال شوف بعض الإمكانيات. اضغط على أي تطبيق.</p></div></div>
+    <div class="lanes" id="lanes"><div class="lane" id="lane1"></div><div class="lane rev" id="lane2"></div></div>
+    <div class="wrap"><p class="lane-note"><span>وهذي مجرد عينة من أكثر من <span class="num">10,000</span> تطبيق ولعبة.</span><b>والحلو؟ مو لازم تختار واحد.</b></p></div>
+  </section>
+
+
+  <section class="sec" style="padding-top:0">
+    <div class="wrap">
+      <div class="hd lift pre"><span class="ghost-n">PLUS</span><span class="eb"><i></i>جرّبها بنفسك</span><h2>مو فاهم وش البلس؟ <em>تعال نوريك.</em></h2><p>اختر تطبيق من الأسفل، وشوف الإعدادات اللي تنفتح لك.</p></div>
+      <div class="pdemo">
+        <div class="phone-f"><div class="scr">
+          <div class="sbar"><span>9:41</span><span>●●● 5G</span></div>
+          <div class="ios-hd"><img id="dImg" alt=""><div><b id="dName"></b><small>SETTINGS</small></div><span class="pill-plus">PLUS</span></div>
+          <div class="ios-grp"><div class="cap">مميزات البلس</div><div id="dRows"></div></div>
+          <div class="ios-foot" id="dFoot"></div>
+        </div></div>
+        <div class="dock" id="dock" role="tablist" aria-label="التطبيقات"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" style="padding-top:0">
+    <div class="wrap">
+      <div class="hd lift pre"><span class="ghost-n">VS</span><span class="eb"><i></i>الفرق واضح</span><h2>اسحب وشوف <em>الفرق.</em></h2></div>
+      <div class="cmp2" id="cmp">
+        <div class="layer plain"><div class="lh"><b>النسخة العادية</b><span>APP</span></div><ul id="cmpA"></ul></div>
+        <div class="layer plus"><div class="lh"><b>مع كون بلس</b><span>PLUS</span></div><ul id="cmpB"></ul></div>
+        <div class="handle"><span class="knob2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6-6 6 6 6M15 6l6 6-6 6"/></svg></span></div>
+      </div>
+      <p class="cmp-hint">يمين: النسخة العادية · يسار: كون بلس · اسحب الدائرة</p>
+    </div>
+  </section>
+
+  <section class="sec" id="how" style="padding-top:0">
+    <div class="wrap">
+      <div class="hd lift pre"><span class="ghost-n">AUTO</span><span class="eb"><i></i>تسليم تلقائي</span><h2>طلبك <em>يوصلك</em>.. وأنت مكانك</h2><p>تدفع، وخلال دقائق الكود في جوالك.</p></div>
+      <div class="dphone"><div class="phone-f"><div class="scr">
+        <div class="notif" id="notif"><img src="{{ 'images/kon/logo.webp' | asset }}" alt=""><div><b>كون ستور</b><span>كود التفعيل جاهز ✅ اضغط للعرض</span></div><small>الآن</small></div>
+<div class="card chat" id="chat">
+        <div class="chat-top"><img src="{{ 'images/kon/logo.webp' | asset }}" alt=""><div><b>كون ستور</b><small>● رسالة تلقائية</small></div></div>
+        <div class="chat-body" id="chatBody">
+          <span class="day">اليوم</span>
+          <div class="msg me">طلبت باقة بلس للآيفون 🙌<small>10:24</small></div>
+          <div class="typing" id="typing"><i></i><i></i><i></i></div>
+          <div class="msg us">✅ تم الدفع وطلبك جاهز.. اشتراك سنة كاملة<small>10:24</small></div>
+          <div class="msg us">كود التفعيل الخاص بجهازك:<div class="code"><span>KON-••••••</span><em>اضغط للنسخ</em></div><small>10:24</small></div>
+          <div class="msg us">افتح موقع التثبيت من Safari وأدخل الكود 👇<small>10:25</small></div>
+        </div>
+      </div>
+      </div></div></div>
+      <div class="hd lift pre" style="margin-top:56px"><span class="ghost-n">1·2·3</span><span class="eb"><i></i>ثلاث خطوات وبس</span><h2>ومن هنا.. الأمور <em>أبسط مما تتوقع.</em></h2><p>من اختيارك للتفعيل.. ثلاث خطوات وبس.</p></div>
+      <div class="easy" id="easy">
+        <svg class="wire" viewBox="0 0 300 60" preserveAspectRatio="none" aria-hidden="true"><path id="wireP" d="M50 30 C 90 6, 110 54, 150 30 S 210 6, 250 30" fill="none"/></svg>
+        <div class="es"><span class="tile"><b>01</b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l-1 12H7z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/><path d="m10 14 2 2 3-3"/></svg></span><h3>اختيارك.. <em>وعلى راحتك.</em></h3></div>
+        <div class="es"><span class="tile"><b>02</b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="m3 8 9 6 9-6"/><path d="M16 3l1.5 1.5L20 2"/></svg></span><h3>طلبك يوصلك <em>فوراً.</em></h3></div>
+        <div class="es"><span class="tile"><b>03</b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 1 1-2.3-5.6"/><path d="M20 4v4h-4"/><path d="m9 12 2 2 4-4"/></svg></span><h3>وتبدأ تجربتك <em>فوراً.</em></h3></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" style="padding-top:0">
+    <div class="wrap">
+      <div class="hd lift pre"><span class="ghost-n">LIVE</span><span class="eb"><i></i>من داخل التطبيق</span><h2>مكتبة كاملة <em>بين يدينك.</em></h2><p>هذا تطبيق كون ستور الحقيقي: تتصفح الأقسام، تختار، وتثبّت بضغطة.</p></div>
+      <div class="lib">
+        <div class="shot" id="shot"><img src="{{ 'images/kon/libshot.webp' | asset }}" alt="تطبيق كون ستور على الجوال: آخر التحديثات وتطبيق SAT Instagram"></div>
+        <span class="fchip" style="top:8%;right:max(0px,calc(50% - 215px))"><b class="num">10K+</b>تطبيق ولعبة</span>
+        <span class="fchip" style="top:36%;left:max(0px,calc(50% - 220px));animation-delay:-1.8s">ألعاب معدّلة 🎮</span>
+        <span class="fchip" style="top:62%;right:max(0px,calc(50% - 225px));animation-delay:-3.2s"><i></i>تثبيت بضغطة</span>
+        <span class="fchip" style="bottom:6%;left:max(0px,calc(50% - 205px));animation-delay:-.9s">تحديثات مستمرة</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" style="padding-top:0">
+    <div class="wrap">
+      <div class="hd lift pre"><span class="ghost-n">DETAILS</span><span class="eb"><i></i>قبل وبعد طلبك</span><h2>الفرق الحقيقي.. <em>تسويه التفاصيل.</em></h2><p>وحتى بعد طلبك.. تلقانا معك.</p></div>
+      <div class="dets" id="dets">
+        <article class="det"><span class="tile sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h10M4 11h7M4 16h5"/><circle cx="16" cy="15" r="3.5"/><path d="m18.6 17.6 2.4 2.4"/></svg></span><b class="n">01</b><h3>قبل طلبك</h3><p>باقتين واضحة، والمميزات مكتوبة بدون تعقيد.</p></article>
+        <article class="det"><span class="tile sm"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></span><b class="n">02</b><h3>وقت التفعيل</h3><p>كود خاص بجهازك، وخطوات تثبيت مرتبة.</p></article>
+        <article class="det"><span class="tile sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="14" width="4" height="6" rx="1.5"/><rect x="17" y="14" width="4" height="6" rx="1.5"/></svg></span><b class="n">03</b><h3>بعد طلبك</h3><p>دعم على الواتساب، وضمان 6 أشهر على الاشتراك.</p></article>
+      </div>
+      <div class="care"><span class="agent"><img src="{{ 'images/kon/logo.webp' | asset }}" alt=""><i></i></span><p>نهتم بالتفاصيل الصغيرة.. عشان تجربتك تكون أسهل.</p></div>
+    </div>
+  </section>
+
+  <section class="sec" style="padding-top:0">
+    <div class="wrap">
+      <div class="hd lift pre"><span class="ghost-n">5.0</span><span class="eb"><i></i>وصلت لنهاية القصة؟</span><h2>كلامنا ما يكفي، <em>اسمع منهم.</em></h2></div>
+      <div class="rate"><b>5.0</b><span class="st">★★★★★</span><small>من تقييمات عملاء كون ستور</small></div>
+    </div>
+    <div class="rv-rows" id="rvRows"></div>
+  </section>
+
+  <section class="sec" style="padding-top:0">
+    <div class="wrap">
+      <div class="hd lift pre"><span class="ghost-n">FAQ</span><span class="eb"><i></i>كل اللي في بالك</span><h2>كل سؤال.. <em>له جوابه.</em></h2><p>اضغط على أي سؤال تحت.</p></div>
+      <div class="card ask">
+        <div class="ask-top"><img src="{{ 'images/kon/logo.webp' | asset }}" alt=""><div><b>دعم كون ستور</b><small>● نرد عليك هنا</small></div></div>
+        <div class="ask-body" id="askBody"></div>
+        <div class="qs" id="qs"></div>
+      </div>
+      <div class="need"><div><b>ما لقيت جواب سؤالك؟</b><span>حنا موجودين، واسألنا عن اللي تحتاجه.</span></div><a href="https://wa.me/{{ whatsapp }}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/></svg>تواصل مع دعم كون</a></div>
+    </div>
+  </section>
+
+  <section class="final">
+    <div class="huge" aria-hidden="true"><span>KON</span><span>STORE</span><span>KON</span><span>STORE</span><span>KON</span><span>STORE</span></div>
+    <div class="wrap"><div class="closing">
+      <svg class="sp" style="top:30px;right:12%" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c0 6-4 10-10 10 6 0 10 4 10 10 0-6 4-10 10-10-6 0-10-4-10-10z"/></svg>
+      <svg class="sp" style="top:70px;left:10%;animation-delay:-1.4s" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c0 6-4 10-10 10 6 0 10 4 10 10 0-6 4-10 10-10-6 0-10-4-10-10z"/></svg>
+      <small>كون ستور.</small><h2>وصلت <em>مكانك.</em></h2>
+      <a class="btn btn-red" href="#plans"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 15 6-6 6 6"/></svg>اختر اللي على جوّك</a>
+    </div></div>
+    <div class="wrap inner"><img src="{{ 'images/kon/logo.webp' | asset }}" alt=""><h2>جاهز تخلي جوالك <em>يسوّي أكثر</em>؟</h2><a class="btn btn-red" href="#plans">اشترك الحين</a></div>
+  </section>
+</div>
+
+
+<a class="wa" href="https://wa.me/{{ whatsapp }}" target="_blank" rel="noopener" aria-label="واتساب"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3a2.6 2.6 0 0 0-.8 1.9c0 1.1.8 2.2.9 2.4.1.2 1.6 2.5 3.9 3.5 1.5.6 2 .7 2.7.6.4-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg></a>
+<div class="fx" id="fx" aria-hidden="true">
+  <div class="fx-bg" id="fxBg"></div>
+  <svg class="hex" id="hex" viewBox="0 0 200 200" fill="none"><polygon points="100,8 180,54 180,146 100,192 20,146 20,54" stroke="var(--red)" stroke-width="1.4"/><polygon class="h2" points="100,22 168,61 168,139 100,178 32,139 32,61" stroke="rgba(255,190,204,.55)" stroke-width="1"/></svg>
+  <img class="ghost" id="ghost" alt="">
+  <section class="apc" id="apc" role="dialog" aria-modal="true" aria-labelledby="apcName">
+    <button class="apc-x" id="apcX" type="button" aria-label="إغلاق"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    <header class="apc-hd"><img id="apcImg" alt=""><div><h3 id="apcName"></h3><span class="cnt2"><span class="num" id="apcCnt"></span> ميزة</span></div></header>
+    <ol class="top3" id="apcTop"></ol>
+    <ul class="allf" id="apcAll"></ul>
+    <button class="more" id="apcMore" type="button"><span id="apcMoreT">استكشف باقي المزايا</span><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+    <p class="apc-note">المميزات أمثلة شائعة وتختلف حسب النسخة والتحديثات.</p>
+  </section>
+</div>
+<div class="buybar" id="buybar" aria-hidden="true"><img id="bbImg" src="{{ 'images/kon/iphone.webp' | asset }}" alt=""><div class="t"><b id="bbName">باقة بلس للآيفون</b><span><span class="num" id="bbPrice">69.99</span><small>ر.س</small></span></div><a href="#plans" id="bbGo" class="add" data-n="باقة الآيفون" data-id="{{ iphone_id }}">اطلبها الآن</a></div>
+<div class="spot" id="spot" aria-hidden="true"></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+</section>
+<script>window.KON_IMG={"logo":"{{ 'images/kon/logo.webp' | asset }}","libshot":"{{ 'images/kon/libshot.webp' | asset }}","iphone":"{{ 'images/kon/iphone.webp' | asset }}","android":"{{ 'images/kon/android.webp' | asset }}","snapchat":"{{ 'images/kon/snapchat.webp' | asset }}","whatsapp":"{{ 'images/kon/whatsapp.webp' | asset }}","instagram":"{{ 'images/kon/instagram.webp' | asset }}","tiktok":"{{ 'images/kon/tiktok.webp' | asset }}","youtube":"{{ 'images/kon/youtube.webp' | asset }}","x":"{{ 'images/kon/x.webp' | asset }}","twitter":"{{ 'images/kon/twitter.webp' | asset }}","facebook":"{{ 'images/kon/facebook.webp' | asset }}","wabusiness":"{{ 'images/kon/wabusiness.webp' | asset }}","ytmusic":"{{ 'images/kon/ytmusic.webp' | asset }}","twitch":"{{ 'images/kon/twitch.webp' | asset }}","minichat":"{{ 'images/kon/minichat.webp' | asset }}","jodel":"{{ 'images/kon/jodel.webp' | asset }}","herochar_is_logo":true};</script>
+<script defer src="{{ 'kon-landing.js' | asset }}"></script>

@@ -1,9 +1,9 @@
 {
     "name": {
-        "ar": "رائد Twig",
-        "en": "Raed Twig"
+        "ar": "كون ستور",
+        "en": "Kon Store"
     },
-    "repository": "https://github.com/SallaApp/theme-raed",
+    "repository": "https://github.com/alsalehi2030-dot/kon-theme",
     "author_email": "support@salla.sa",
     "features": [
         "mega-menu",
@@ -284,6 +284,42 @@
     ],
     "components": [
         {
+            "key": "f3b7c1a2-6d4e-4c8a-9b1f-0a2e5d7c9b31",
+            "title": {
+                "ar": "واجهة كون ستور الكاملة",
+                "en": "Kon Store landing"
+            },
+            "icon": "sicon-home",
+            "path": "home.kon-landing",
+            "fields": [
+                {
+                    "id": "iphone_id",
+                    "type": "string",
+                    "format": "text",
+                    "label": "رقم منتج باقة الآيفون",
+                    "value": "409316185",
+                    "required": true
+                },
+                {
+                    "id": "android_id",
+                    "type": "string",
+                    "format": "text",
+                    "label": "رقم منتج باقة الأندرويد",
+                    "value": "2042956966",
+                    "required": true
+                },
+                {
+                    "id": "whatsapp",
+                    "type": "string",
+                    "format": "text",
+                    "label": "رقم الواتساب (بدون +)",
+                    "value": "966556938377",
+                    "required": true
+                }
+            ],
+            "is_default": true
+        },
+        {
             "key": "186b3f4f-25cf-4d3c-abca-cef7eed6f0ab",
             "title": {
                 "en": "Enhances Animated Images",
@@ -292,7 +328,7 @@
             "icon": "sicon-image-carousel",
             "path": "home.enhanced-slider",
             "image": "https://cdn.salla.network/images/themes/raed/preview-images/images-slider-enhancement.png?v=1.1",
-            "is_default": true,
+            "is_default": false,
             "fields": [
                 {
                     "type": "static",
@@ -394,7 +430,7 @@
             "icon": "sicon-layout-grid-rearrange",
             "path": "home.main-links",
             "image": "https://cdn.salla.network/images/themes/raed/main-links-with-bg.jpg?v=1.1",
-            "is_default": true,
+            "is_default": false,
             "fields": [
                 {
                     "type": "static",
@@ -803,7 +839,7 @@
             "icon": "sicon-image",
             "path": "home.enhanced-square-banners",
             "image": "https://cdn.salla.network/images/themes/raed/preview-images/square-images.png?v=1.1",
-            "is_default": true,
+            "is_default": false,
             "fields": [
                 {
                     "type": "static",
@@ -1031,7 +1067,7 @@
             "icon": "sicon-chat-bubbles",
             "path": "home.custom-testimonials",
             "image": "https://cdn.salla.network/images/themes/raed/preview-images/custom-testimonials.png?v=1.1",
-            "is_default": true,
+            "is_default": false,
             "fields": [
                 {
                     "type": "static",
